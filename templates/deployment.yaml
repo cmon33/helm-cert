@@ -25,7 +25,7 @@ spec:
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}{{ .Values.image.name }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: SPRING_DATASOURCE_PASSWORD
@@ -44,5 +44,5 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       securityContext:
-        runAsNonRoot: false
-        runAsUser: 0
+        runAsNonRoot: true
+        runAsUser: null
