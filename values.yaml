@@ -8,14 +8,14 @@ environnement: ovh
 phase: dev
 
 image:
-  repository: harbor.apps.c6.numerique-interieur.com/mi-service-team
+  repository: harbor.apps.dso.numerique-interieur.com/form-crtcm
   name: java-demo
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "master"
 
 imagePullSecrets:
-  - name: "default-secret"
+  - name: "registry-pull-secret"
 nameOverride: ""
 fullnameOverride: ""
 
@@ -27,15 +27,15 @@ ingress:
   enabled: true
   secret:
     enabled: true
-  host: plec-demo.dev.numerique-interieur.com
+  host: crtcm.apps.dso-formation.hp.numerique-interieur.com
 
 resources:
   limits:
     memory: "512Mi"
-    cpu: "1"
+    cpu: "500m"
   requests:
     memory: "512Mi"
-    cpu: "500Mi"
+    cpu: "500m"
 
 global:
   postgresql:
